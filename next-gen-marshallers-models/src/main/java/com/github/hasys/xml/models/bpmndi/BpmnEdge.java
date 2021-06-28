@@ -5,14 +5,10 @@ import java.util.Objects;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
 import com.github.hasys.xml.models.di.Waypoint;
-import org.treblereel.gwt.xml.mapper.api.annotation.TargetNamespace;
 import org.treblereel.gwt.xml.mapper.api.annotation.XmlUnwrappedCollection;
 
-@XmlRootElement(name = "BPMNEdge", namespace = "http://www.omg.org/spec/BPMN/20100524/DI")
-@TargetNamespace(prefix = "bpmndi", namespace = "http://www.omg.org/spec/BPMN/20100524/DI")
 public class BpmnEdge {
 
     @XmlAttribute

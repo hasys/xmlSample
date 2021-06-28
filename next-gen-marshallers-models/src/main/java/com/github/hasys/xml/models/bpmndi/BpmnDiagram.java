@@ -3,12 +3,7 @@ package com.github.hasys.xml.models.bpmndi;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.XmlElement;
-import javax.xml.bind.annotation.XmlRootElement;
 
-import org.treblereel.gwt.xml.mapper.api.annotation.TargetNamespace;
-
-@XmlRootElement(name = "BPMNDiagram", namespace = "http://www.omg.org/spec/BPMN/20100524/DI")
-@TargetNamespace(prefix = "bpmndi", namespace = "http://www.omg.org/spec/BPMN/20100524/DI")
 public class BpmnDiagram {
 
     @XmlElement(name = "BPMNPlane")

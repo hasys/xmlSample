@@ -2,11 +2,6 @@ package com.github.hasys.xml.models.bpsim;
 
 import java.util.Objects;
 
-import javax.xml.bind.annotation.XmlRootElement;
-
-import org.treblereel.gwt.xml.mapper.api.annotation.TargetNamespace;
-
-@TargetNamespace(prefix = "bpsim", namespace = "http://www.bpsim.org/schemas/1.0")
 public class BPSimData {
 
     private Scenario scenario;

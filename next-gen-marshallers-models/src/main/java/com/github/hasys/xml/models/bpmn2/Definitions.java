@@ -7,6 +7,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import com.github.hasys.xml.models.bpmndi.BpmnDiagram;
 import org.treblereel.gwt.xml.mapper.api.annotation.TargetNamespace;
 import org.treblereel.gwt.xml.mapper.api.annotation.XMLMapper;
 

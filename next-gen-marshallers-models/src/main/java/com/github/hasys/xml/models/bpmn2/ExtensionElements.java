@@ -1,12 +1,15 @@
 package com.github.hasys.xml.models.bpmn2;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import com.github.hasys.xml.models.bpsim.BPSimData;
+import com.github.hasys.xml.models.drools.MetaData;
 import org.treblereel.gwt.xml.mapper.api.annotation.TargetNamespace;
+import org.treblereel.gwt.xml.mapper.api.annotation.XmlUnwrappedCollection;
 
 @XmlRootElement(name = "extensionElements", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL")
 @TargetNamespace(prefix = "bpmn2", namespace = "http://www.omg.org/bpmn20")
@@ -15,12 +18,23 @@ public class ExtensionElements {
     @XmlElement(name = "BPSimData")
     private BPSimData bpSimData;
 
+    @XmlUnwrappedCollection
+    private List<MetaData> metaData;
+
     public BPSimData getBpSimData() {
         return bpSimData;
     }
 
     public void setBpSimData(BPSimData bpSimData) {
         this.bpSimData = bpSimData;
+    }
+
+    public List<MetaData> getMetaData() {
+        return metaData;
+    }
+
+    public void setMetaData(List<MetaData> metaData) {
+        this.metaData = metaData;
     }
 
     @Override
@@ -32,11 +46,13 @@ public class ExtensionElements {
             return false;
         }
         ExtensionElements that = (ExtensionElements) o;
-        return Objects.equals(getBpSimData(), that.getBpSimData());
+        return Objects.equals(getBpSimData(), that.getBpSimData())
+                && Objects.equals(getMetaData(), that.getMetaData());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getBpSimData());
+        return Objects.hash(getBpSimData(),
+                            getMetaData());
     }
 }

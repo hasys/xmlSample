@@ -7,9 +7,13 @@ import javax.xml.stream.XMLStreamException;
 
 import com.github.hasys.xml.models.bpmn2.Definitions;
 import com.github.hasys.xml.models.bpmn2.Definitions_XMLMapperImpl;
+import com.github.hasys.xml.models.bpmn2.EndEvent;
 import com.github.hasys.xml.models.bpmn2.ExtensionElements;
 import com.github.hasys.xml.models.bpmn2.Process;
 import com.github.hasys.xml.models.bpmn2.Relationship;
+import com.github.hasys.xml.models.bpmn2.ScriptTask;
+import com.github.hasys.xml.models.bpmn2.SequenceFlow;
+import com.github.hasys.xml.models.bpmn2.StartEvent;
 import com.github.hasys.xml.models.bpmndi.BpmnDiagram;
 import com.github.hasys.xml.models.bpmndi.BpmnEdge;
 import com.github.hasys.xml.models.bpmndi.BpmnPlane;
@@ -18,6 +22,7 @@ import com.github.hasys.xml.models.bpsim.BPSimData;
 import com.github.hasys.xml.models.bpsim.Scenario;
 import com.github.hasys.xml.models.dc.Bounds;
 import com.github.hasys.xml.models.di.Waypoint;
+import com.github.hasys.xml.models.drools.MetaData;
 
 public class Main {
 
@@ -55,15 +60,59 @@ public class Main {
         edges.add(edge2);
         plane.setBpmnEdges(edges);
 
-
         Process process = new Process();
-        process.setExecutable(true);
+        process.setIsExecutable(true);
         process.setAdHoc(false);
         process.setProcessType("Public");
         process.setName(PROCESS_ID);
         process.setId(PROCESS_ID);
         process.setPackageName("com.example");
         process.setVersion("1.0");
+
+        ScriptTask task = new ScriptTask();
+        task.setId(NODE_2_ID);
+        task.setName("Task");
+        task.setScriptFormat("http://www.java.com/java");
+        task.setIncoming(EDGE_1_ID);
+        task.setOutgoing(EDGE_2_ID);
+        ExtensionElements taskExtensions = new ExtensionElements();
+        MetaData taskExtensionData = new MetaData();
+        taskExtensionData.setName("elementname");
+        taskExtensionData.setMetaValue("Task");
+        task.setExtensionElements(taskExtensions);
+        List<MetaData> taskMetaDataList = new ArrayList<>();
+        taskMetaDataList.add(taskExtensionData);
+        taskExtensions.setMetaData(taskMetaDataList);
+        List<ScriptTask> tasks = new ArrayList<>();
+        tasks.add(task);
+        task.setScript("System.out.println(\"Hello World\");");
+        process.setScriptTasks(tasks);
+
+        List<StartEvent> startEvents = new ArrayList<>();
+        StartEvent startEvent = new StartEvent();
+        startEvent.setId(NODE_1_ID);
+        startEvent.setOutgoing(EDGE_1_ID);
+        startEvents.add(startEvent);
+        process.setStartEvents(startEvents);
+
+        List<EndEvent> endEvents = new ArrayList<>();
+        EndEvent endEvent = new EndEvent();
+        endEvent.setId(NODE_3_ID);
+        endEvent.setIncoming(EDGE_2_ID);
+        endEvents.add(endEvent);
+        process.setEndEvents(endEvents);
+
+        SequenceFlow flow1 = createSequenceFlow(EDGE_1_ID,
+                                                NODE_1_ID,
+                                                NODE_2_ID);
+
+        SequenceFlow flow2 = createSequenceFlow(EDGE_2_ID,
+                                                NODE_2_ID,
+                                                NODE_3_ID);
+        List<SequenceFlow> flows = new ArrayList<>();
+        flows.add(flow1);
+        flows.add(flow2);
+        process.setSequenceFlows(flows);
 
         Relationship relationship = new Relationship();
         ExtensionElements extensionElements = new ExtensionElements();
@@ -117,5 +166,25 @@ public class Main {
         edge.setWaypoint(waypoints);
 
         return edge;
+    }
+
+    private static SequenceFlow createSequenceFlow(String id, String source, String target) {
+        SequenceFlow flow = new SequenceFlow();
+        flow.setId(id);
+        flow.setSourceRef(source);
+        flow.setTargetRef(target);
+        MetaData metaDataSource = new MetaData();
+        metaDataSource.setName("isAutoConnection.source");
+        metaDataSource.setMetaValue("true");
+        MetaData metaDataTarget = new MetaData();
+        metaDataTarget.setName("isAutoConnection.target");
+        metaDataTarget.setMetaValue("true");
+        List<MetaData> data = new ArrayList<>();
+        data.add(metaDataSource);
+        data.add(metaDataTarget);
+        ExtensionElements extension = new ExtensionElements();
+        extension.setMetaData(data);
+        flow.setExtensionElements(extension);
+        return flow;
     }
 }

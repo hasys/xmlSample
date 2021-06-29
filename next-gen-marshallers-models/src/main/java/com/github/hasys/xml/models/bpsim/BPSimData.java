@@ -2,8 +2,11 @@ package com.github.hasys.xml.models.bpsim;
 
 import java.util.Objects;
 
+import javax.xml.bind.annotation.XmlElement;
+
 public class BPSimData {
 
+    @XmlElement(name = "Scenario")
     private Scenario scenario;
 
     public Scenario getScenario() {

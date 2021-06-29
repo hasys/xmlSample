@@ -1,36 +1,55 @@
 package com.github.hasys.xml.models.bpmn2;
 
+import java.util.List;
 import java.util.Objects;
 
 import javax.xml.bind.annotation.XmlAttribute;
+import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.treblereel.gwt.xml.mapper.api.annotation.TargetNamespace;
+import org.treblereel.gwt.xml.mapper.api.annotation.XmlUnwrappedCollection;
 
 @XmlRootElement(name = "process", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL")
 @TargetNamespace(prefix = "bpmn2", namespace = "http://www.omg.org/bpmn20")
 public class Process {
 
     @XmlAttribute
-    public String id;
+    private String id;
 
     @XmlAttribute(namespace = "http://www.jboss.org/drools")
-    public String packageName;
+    private String packageName;
 
     @XmlAttribute(namespace = "http://www.jboss.org/drools")
-    public String version;
+    private String version;
 
     @XmlAttribute(namespace = "http://www.jboss.org/drools")
-    public boolean adHoc;
+    private boolean adHoc;
 
     @XmlAttribute
-    public String name;
+    private String name;
 
     @XmlAttribute
-    public boolean isExecutable;
+    private boolean isExecutable;
 
     @XmlAttribute
-    public String processType;
+    private String processType;
+
+    @XmlElement(name = "startEvent")
+    @XmlUnwrappedCollection
+    private List<StartEvent> startEvents;
+
+    @XmlElement(name = "endEvent")
+    @XmlUnwrappedCollection
+    private List<EndEvent> endEvents;
+
+    @XmlElement(name = "sequenceFlow")
+    @XmlUnwrappedCollection
+    private List<SequenceFlow> sequenceFlows;
+
+    @XmlElement(name = "scriptTask")
+    @XmlUnwrappedCollection
+    private List<ScriptTask> scriptTasks;
 
     public String getId() {
         return id;
@@ -56,7 +75,7 @@ public class Process {
         this.version = version;
     }
 
-    public boolean getAdHoc() {
+    public boolean isAdHoc() {
         return adHoc;
     }
 
@@ -72,12 +91,12 @@ public class Process {
         this.name = name;
     }
 
-    public boolean isExecutable() {
+    public boolean getIsExecutable() {
         return isExecutable;
     }
 
-    public void setExecutable(boolean executable) {
-        isExecutable = executable;
+    public void setIsExecutable(boolean isExecutable) {
+        this.isExecutable = isExecutable;
     }
 
     public String getProcessType() {
@@ -86,6 +105,38 @@ public class Process {
 
     public void setProcessType(String processType) {
         this.processType = processType;
+    }
+
+    public List<StartEvent> getStartEvents() {
+        return startEvents;
+    }
+
+    public void setStartEvents(List<StartEvent> startEvents) {
+        this.startEvents = startEvents;
+    }
+
+    public List<EndEvent> getEndEvents() {
+        return endEvents;
+    }
+
+    public void setEndEvents(List<EndEvent> endEvents) {
+        this.endEvents = endEvents;
+    }
+
+    public List<SequenceFlow> getSequenceFlows() {
+        return sequenceFlows;
+    }
+
+    public void setSequenceFlows(List<SequenceFlow> sequenceFlows) {
+        this.sequenceFlows = sequenceFlows;
+    }
+
+    public List<ScriptTask> getScriptTasks() {
+        return scriptTasks;
+    }
+
+    public void setScriptTasks(List<ScriptTask> scriptTasks) {
+        this.scriptTasks = scriptTasks;
     }
 
     @Override
@@ -97,13 +148,17 @@ public class Process {
             return false;
         }
         Process process = (Process) o;
-        return isExecutable() == process.isExecutable()
+        return isAdHoc() == process.isAdHoc()
+                && getIsExecutable() == process.getIsExecutable()
                 && Objects.equals(getId(), process.getId())
                 && Objects.equals(getPackageName(), process.getPackageName())
                 && Objects.equals(getVersion(), process.getVersion())
-                && Objects.equals(getAdHoc(), process.getAdHoc())
                 && Objects.equals(getName(), process.getName())
-                && Objects.equals(getProcessType(), process.getProcessType());
+                && Objects.equals(getProcessType(), process.getProcessType())
+                && Objects.equals(getStartEvents(), process.getStartEvents())
+                && Objects.equals(getEndEvents(), process.getEndEvents())
+                && Objects.equals(getSequenceFlows(), process.getSequenceFlows())
+                && Objects.equals(getScriptTasks(), process.getScriptTasks());
     }
 
     @Override
@@ -111,9 +166,13 @@ public class Process {
         return Objects.hash(getId(),
                             getPackageName(),
                             getVersion(),
-                            getAdHoc(),
+                            isAdHoc(),
                             getName(),
-                            isExecutable(),
-                            getProcessType());
+                            getIsExecutable(),
+                            getProcessType(),
+                            getStartEvents(),
+                            getEndEvents(),
+                            getSequenceFlows(),
+                            getScriptTasks());
     }
 }

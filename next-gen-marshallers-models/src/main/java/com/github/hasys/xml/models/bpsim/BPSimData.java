@@ -9,6 +9,9 @@ public class BPSimData {
     @XmlElement(name = "Scenario")
     private Scenario scenario;
 
+    // All code behind this comment is auto generated.
+    // Please regenerate it again if you added new property.
+
     public Scenario getScenario() {
         return scenario;
     }

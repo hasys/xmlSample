@@ -16,6 +16,15 @@ public class Relationship {
     @XmlAttribute
     private String type = "BPSimData";
 
+    private String source;
+
+    private String target;
+
+    private ExtensionElements extensionElements;
+
+    // All code behind this comment is auto generated.
+    // Please regenerate it again if you added new property.
+
     public String getType() {
         return type;
     }
@@ -23,12 +32,6 @@ public class Relationship {
     public void setType(String type) {
         this.type = type;
     }
-
-    private String source;
-
-    private String target;
-
-    private ExtensionElements extensionElements;
 
     public String getSource() {
         return source;

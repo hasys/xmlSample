@@ -21,6 +21,9 @@ public class BpmnEdge {
     @XmlUnwrappedCollection
     private List<Waypoint> waypoint;
 
+    // All code behind this comment is auto generated.
+    // Please regenerate it again if you added new property.
+
     public String getId() {
         return id;
     }

@@ -9,6 +9,9 @@ public class BpmnDiagram {
     @XmlElement(name = "BPMNPlane")
     private BpmnPlane bpmnPlane;
 
+    // All code behind this comment is auto generated.
+    // Please regenerate it again if you added new property.
+
     public BpmnPlane getBpmnPlane() {
         return bpmnPlane;
     }

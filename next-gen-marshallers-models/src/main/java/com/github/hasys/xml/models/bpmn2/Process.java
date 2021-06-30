@@ -51,6 +51,13 @@ public class Process {
     @XmlUnwrappedCollection
     private List<ScriptTask> scriptTasks;
 
+    @XmlElement(name = "task")
+    @XmlUnwrappedCollection
+    private List<Task> tasks;
+
+    // All code behind this comment is auto generated.
+    // Please regenerate it again if you added new property.
+
     public String getId() {
         return id;
     }
@@ -95,8 +102,8 @@ public class Process {
         return isExecutable;
     }
 
-    public void setIsExecutable(boolean isExecutable) {
-        this.isExecutable = isExecutable;
+    public void setIsExecutable(boolean executable) {
+        isExecutable = executable;
     }
 
     public String getProcessType() {
@@ -139,6 +146,14 @@ public class Process {
         this.scriptTasks = scriptTasks;
     }
 
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+    public void setTasks(List<Task> tasks) {
+        this.tasks = tasks;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -148,31 +163,11 @@ public class Process {
             return false;
         }
         Process process = (Process) o;
-        return isAdHoc() == process.isAdHoc()
-                && getIsExecutable() == process.getIsExecutable()
-                && Objects.equals(getId(), process.getId())
-                && Objects.equals(getPackageName(), process.getPackageName())
-                && Objects.equals(getVersion(), process.getVersion())
-                && Objects.equals(getName(), process.getName())
-                && Objects.equals(getProcessType(), process.getProcessType())
-                && Objects.equals(getStartEvents(), process.getStartEvents())
-                && Objects.equals(getEndEvents(), process.getEndEvents())
-                && Objects.equals(getSequenceFlows(), process.getSequenceFlows())
-                && Objects.equals(getScriptTasks(), process.getScriptTasks());
+        return isAdHoc() == process.isAdHoc() && getIsExecutable() == process.getIsExecutable() && Objects.equals(getId(), process.getId()) && Objects.equals(getPackageName(), process.getPackageName()) && Objects.equals(getVersion(), process.getVersion()) && Objects.equals(getName(), process.getName()) && Objects.equals(getProcessType(), process.getProcessType()) && Objects.equals(getStartEvents(), process.getStartEvents()) && Objects.equals(getEndEvents(), process.getEndEvents()) && Objects.equals(getSequenceFlows(), process.getSequenceFlows()) && Objects.equals(getScriptTasks(), process.getScriptTasks()) && Objects.equals(getTasks(), process.getTasks());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(),
-                            getPackageName(),
-                            getVersion(),
-                            isAdHoc(),
-                            getName(),
-                            getIsExecutable(),
-                            getProcessType(),
-                            getStartEvents(),
-                            getEndEvents(),
-                            getSequenceFlows(),
-                            getScriptTasks());
+        return Objects.hash(getId(), getPackageName(), getVersion(), isAdHoc(), getName(), getIsExecutable(), getProcessType(), getStartEvents(), getEndEvents(), getSequenceFlows(), getScriptTasks(), getTasks());
     }
 }

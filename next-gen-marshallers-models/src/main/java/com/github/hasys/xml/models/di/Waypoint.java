@@ -12,6 +12,9 @@ public class Waypoint {
     @XmlAttribute
     private int y;
 
+    // All code behind this comment is auto generated.
+    // Please regenerate it again if you added new property.
+
     public int getX() {
         return x;
     }

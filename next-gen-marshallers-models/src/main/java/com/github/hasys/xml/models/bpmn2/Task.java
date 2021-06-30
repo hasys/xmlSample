@@ -7,9 +7,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import org.treblereel.gwt.xml.mapper.api.annotation.TargetNamespace;
 
-@XmlRootElement(name = "scriptTask", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL")
+@XmlRootElement(name = "task", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL")
 @TargetNamespace(prefix = "bpmn2", namespace = "http://www.omg.org/bpmn20")
-public class ScriptTask {
+public class Task {
 
     @XmlAttribute
     private String id;
@@ -17,12 +17,7 @@ public class ScriptTask {
     @XmlAttribute
     private String name;
 
-    @XmlAttribute
-    private String scriptFormat;
-
     private ExtensionElements extensionElements;
-
-    private String script;
 
     private String incoming;
     private String outgoing;
@@ -46,28 +41,12 @@ public class ScriptTask {
         this.name = name;
     }
 
-    public String getScriptFormat() {
-        return scriptFormat;
-    }
-
-    public void setScriptFormat(String scriptFormat) {
-        this.scriptFormat = scriptFormat;
-    }
-
     public ExtensionElements getExtensionElements() {
         return extensionElements;
     }
 
     public void setExtensionElements(ExtensionElements extensionElements) {
         this.extensionElements = extensionElements;
-    }
-
-    public String getScript() {
-        return script;
-    }
-
-    public void setScript(String script) {
-        this.script = script;
     }
 
     public String getIncoming() {
@@ -91,15 +70,23 @@ public class ScriptTask {
         if (this == o) {
             return true;
         }
-        if (!(o instanceof ScriptTask)) {
+        if (!(o instanceof Task)) {
             return false;
         }
-        ScriptTask that = (ScriptTask) o;
-        return Objects.equals(getId(), that.getId()) && Objects.equals(getName(), that.getName()) && Objects.equals(getScriptFormat(), that.getScriptFormat()) && Objects.equals(getExtensionElements(), that.getExtensionElements()) && Objects.equals(getScript(), that.getScript()) && Objects.equals(getIncoming(), that.getIncoming()) && Objects.equals(getOutgoing(), that.getOutgoing());
+        Task task = (Task) o;
+        return Objects.equals(getId(), task.getId())
+                && Objects.equals(getName(), task.getName())
+                && Objects.equals(getExtensionElements(), task.getExtensionElements())
+                && Objects.equals(getIncoming(), task.getIncoming())
+                && Objects.equals(getOutgoing(), task.getOutgoing());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getName(), getScriptFormat(), getExtensionElements(), getScript(), getIncoming(), getOutgoing());
+        return Objects.hash(getId(),
+                            getName(),
+                            getExtensionElements(),
+                            getIncoming(),
+                            getOutgoing());
     }
 }

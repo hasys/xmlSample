@@ -18,6 +18,9 @@ public class BpmnShape {
     @XmlElement(name = "Bounds")
     private Bounds bounds;
 
+    // All code behind this comment is auto generated.
+    // Please regenerate it again if you added new property.
+
     public String getId() {
         return id;
     }

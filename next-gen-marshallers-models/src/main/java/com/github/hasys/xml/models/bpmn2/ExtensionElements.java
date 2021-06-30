@@ -21,6 +21,9 @@ public class ExtensionElements {
     @XmlUnwrappedCollection
     private List<MetaData> metaData;
 
+    // All code behind this comment is auto generated.
+    // Please regenerate it again if you added new property.
+
     public BPSimData getBpSimData() {
         return bpSimData;
     }

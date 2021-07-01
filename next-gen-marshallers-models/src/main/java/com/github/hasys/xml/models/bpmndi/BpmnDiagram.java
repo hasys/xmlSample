@@ -9,6 +9,9 @@ public class BpmnDiagram {
     @XmlElement(name = "BPMNPlane")
     private BpmnPlane bpmnPlane;
 
+    @XmlElement(name = "BPMNLabelStyle")
+    private BpmnLabelStyle bpmnLabelStyle;
+
     // All code behind this comment is auto generated.
     // Please regenerate it again if you added new property.
 
@@ -20,6 +23,14 @@ public class BpmnDiagram {
         this.bpmnPlane = bpmnPlane;
     }
 
+    public BpmnLabelStyle getBpmnLabelStyle() {
+        return bpmnLabelStyle;
+    }
+
+    public void setBpmnLabelStyle(BpmnLabelStyle bpmnLabelStyle) {
+        this.bpmnLabelStyle = bpmnLabelStyle;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -29,11 +40,11 @@ public class BpmnDiagram {
             return false;
         }
         BpmnDiagram that = (BpmnDiagram) o;
-        return Objects.equals(getBpmnPlane(), that.getBpmnPlane());
+        return Objects.equals(getBpmnPlane(), that.getBpmnPlane()) && Objects.equals(getBpmnLabelStyle(), that.getBpmnLabelStyle());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getBpmnPlane());
+        return Objects.hash(getBpmnPlane(), getBpmnLabelStyle());
     }
 }

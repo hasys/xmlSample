@@ -7,49 +7,49 @@ import javax.xml.bind.annotation.XmlAttribute;
 public class Bounds {
 
     @XmlAttribute
-    private int height;
+    private double height;
 
     @XmlAttribute
-    private int width;
+    private double width;
 
     @XmlAttribute
-    private int x;
+    private double x;
 
     @XmlAttribute
-    private int y;
+    private double y;
 
     // All code behind this comment is auto generated.
     // Please regenerate it again if you added new property.
 
-    public int getHeight() {
+    public double getHeight() {
         return height;
     }
 
-    public void setHeight(int height) {
+    public void setHeight(double height) {
         this.height = height;
     }
 
-    public int getWidth() {
+    public double getWidth() {
         return width;
     }
 
-    public void setWidth(int width) {
+    public void setWidth(double width) {
         this.width = width;
     }
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
@@ -62,17 +62,11 @@ public class Bounds {
             return false;
         }
         Bounds bounds = (Bounds) o;
-        return getHeight() == bounds.getHeight()
-                && getWidth() == bounds.getWidth()
-                && getX() == bounds.getX()
-                && getY() == bounds.getY();
+        return Double.compare(bounds.getHeight(), getHeight()) == 0 && Double.compare(bounds.getWidth(), getWidth()) == 0 && Double.compare(bounds.getX(), getX()) == 0 && Double.compare(bounds.getY(), getY()) == 0;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getHeight(),
-                            getWidth(),
-                            getX(),
-                            getY());
+        return Objects.hash(getHeight(), getWidth(), getX(), getY());
     }
 }

@@ -18,6 +18,9 @@ public class BpmnShape {
     @XmlElement(name = "Bounds")
     private Bounds bounds;
 
+    @XmlElement(name = "BPMNLabel")
+    private BpmnLabel bpmnLabel;
+
     // All code behind this comment is auto generated.
     // Please regenerate it again if you added new property.
 
@@ -45,6 +48,14 @@ public class BpmnShape {
         this.bounds = bounds;
     }
 
+    public BpmnLabel getBpmnLabel() {
+        return bpmnLabel;
+    }
+
+    public void setBpmnLabel(BpmnLabel bpmnLabel) {
+        this.bpmnLabel = bpmnLabel;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -54,15 +65,11 @@ public class BpmnShape {
             return false;
         }
         BpmnShape bpmnShape = (BpmnShape) o;
-        return Objects.equals(getId(), bpmnShape.getId())
-                && Objects.equals(getBpmnElement(), bpmnShape.getBpmnElement())
-                && Objects.equals(getBounds(), bpmnShape.getBounds());
+        return Objects.equals(getId(), bpmnShape.getId()) && Objects.equals(getBpmnElement(), bpmnShape.getBpmnElement()) && Objects.equals(getBounds(), bpmnShape.getBounds()) && Objects.equals(getBpmnLabel(), bpmnShape.getBpmnLabel());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(),
-                            getBpmnElement(),
-                            getBounds());
+        return Objects.hash(getId(), getBpmnElement(), getBounds(), getBpmnLabel());
     }
 }

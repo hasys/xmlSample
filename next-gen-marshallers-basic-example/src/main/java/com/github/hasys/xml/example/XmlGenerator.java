@@ -32,7 +32,6 @@ public class XmlGenerator {
     public static final String EDGE_1_ID = "_986393D6-DB11-49ED-A8AC-7EC8D26C9A9C";
     public static final String EDGE_2_ID = "_22F71A00-C577-4993-B6EE-99798C4C9555";
 
-
     public static Definitions createDefinitions() {
         final String DEFINITION_ID = "_xo6H0LclEDmUduPSF37zfg";
 
@@ -182,5 +181,4 @@ public class XmlGenerator {
 
         return edge;
     }
-
 }

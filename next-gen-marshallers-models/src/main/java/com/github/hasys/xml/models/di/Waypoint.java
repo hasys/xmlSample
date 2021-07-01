@@ -7,27 +7,27 @@ import javax.xml.bind.annotation.XmlAttribute;
 public class Waypoint {
 
     @XmlAttribute
-    private int x;
+    private double x;
 
     @XmlAttribute
-    private int y;
+    private double y;
 
     // All code behind this comment is auto generated.
     // Please regenerate it again if you added new property.
 
-    public int getX() {
+    public double getX() {
         return x;
     }
 
-    public void setX(int x) {
+    public void setX(double x) {
         this.x = x;
     }
 
-    public int getY() {
+    public double getY() {
         return y;
     }
 
-    public void setY(int y) {
+    public void setY(double y) {
         this.y = y;
     }
 
@@ -40,8 +40,7 @@ public class Waypoint {
             return false;
         }
         Waypoint waypoint = (Waypoint) o;
-        return getX() == waypoint.getX()
-                && getY() == waypoint.getY();
+        return Double.compare(waypoint.getX(), getX()) == 0 && Double.compare(waypoint.getY(), getY()) == 0;
     }
 
     @Override

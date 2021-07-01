@@ -21,6 +21,9 @@ public class BpmnEdge {
     @XmlUnwrappedCollection
     private List<Waypoint> waypoint;
 
+    @XmlElement(name = "BPMNLabel")
+    private BpmnLabel bpmnLabel;
+
     // All code behind this comment is auto generated.
     // Please regenerate it again if you added new property.
 
@@ -48,6 +51,14 @@ public class BpmnEdge {
         this.waypoint = waypoint;
     }
 
+    public BpmnLabel getBpmnLabel() {
+        return bpmnLabel;
+    }
+
+    public void setBpmnLabel(BpmnLabel bpmnLabel) {
+        this.bpmnLabel = bpmnLabel;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) {
@@ -57,15 +68,11 @@ public class BpmnEdge {
             return false;
         }
         BpmnEdge bpmnEdge = (BpmnEdge) o;
-        return Objects.equals(getId(), bpmnEdge.getId())
-                && Objects.equals(getBpmnElement(), bpmnEdge.getBpmnElement())
-                && Objects.equals(getWaypoint(), bpmnEdge.getWaypoint());
+        return Objects.equals(getId(), bpmnEdge.getId()) && Objects.equals(getBpmnElement(), bpmnEdge.getBpmnElement()) && Objects.equals(getWaypoint(), bpmnEdge.getWaypoint()) && Objects.equals(getBpmnLabel(), bpmnEdge.getBpmnLabel());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(),
-                            getBpmnElement(),
-                            getWaypoint());
+        return Objects.hash(getId(), getBpmnElement(), getWaypoint(), getBpmnLabel());
     }
 }

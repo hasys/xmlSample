@@ -78,7 +78,7 @@ public class XmlGenerator {
 
     public static Process createProcess() {
         Process process = new Process();
-        process.setIsExecutable(true);
+        process.setExecutable(true);
         process.setAdHoc(false);
         process.setProcessType("Public");
         process.setName(PROCESS_ID);

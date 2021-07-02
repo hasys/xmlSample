@@ -29,8 +29,8 @@ public class Process {
     @XmlAttribute
     private String name;
 
-    @XmlAttribute
-    private boolean isExecutable;
+    @XmlAttribute(name = "isExecutable")
+    private boolean executable;
 
     @XmlAttribute
     private String processType;
@@ -98,12 +98,12 @@ public class Process {
         this.name = name;
     }
 
-    public boolean getIsExecutable() {
-        return isExecutable;
+    public boolean isExecutable() {
+        return executable;
     }
 
-    public void setIsExecutable(boolean executable) {
-        isExecutable = executable;
+    public void setExecutable(boolean executable) {
+        this.executable = executable;
     }
 
     public String getProcessType() {
@@ -163,11 +163,11 @@ public class Process {
             return false;
         }
         Process process = (Process) o;
-        return isAdHoc() == process.isAdHoc() && getIsExecutable() == process.getIsExecutable() && Objects.equals(getId(), process.getId()) && Objects.equals(getPackageName(), process.getPackageName()) && Objects.equals(getVersion(), process.getVersion()) && Objects.equals(getName(), process.getName()) && Objects.equals(getProcessType(), process.getProcessType()) && Objects.equals(getStartEvents(), process.getStartEvents()) && Objects.equals(getEndEvents(), process.getEndEvents()) && Objects.equals(getSequenceFlows(), process.getSequenceFlows()) && Objects.equals(getScriptTasks(), process.getScriptTasks()) && Objects.equals(getTasks(), process.getTasks());
+        return isAdHoc() == process.isAdHoc() && isExecutable() == process.isExecutable() && Objects.equals(getId(), process.getId()) && Objects.equals(getPackageName(), process.getPackageName()) && Objects.equals(getVersion(), process.getVersion()) && Objects.equals(getName(), process.getName()) && Objects.equals(getProcessType(), process.getProcessType()) && Objects.equals(getStartEvents(), process.getStartEvents()) && Objects.equals(getEndEvents(), process.getEndEvents()) && Objects.equals(getSequenceFlows(), process.getSequenceFlows()) && Objects.equals(getScriptTasks(), process.getScriptTasks()) && Objects.equals(getTasks(), process.getTasks());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getId(), getPackageName(), getVersion(), isAdHoc(), getName(), getIsExecutable(), getProcessType(), getStartEvents(), getEndEvents(), getSequenceFlows(), getScriptTasks(), getTasks());
+        return Objects.hash(getId(), getPackageName(), getVersion(), isAdHoc(), getName(), isExecutable(), getProcessType(), getStartEvents(), getEndEvents(), getSequenceFlows(), getScriptTasks(), getTasks());
     }
 }

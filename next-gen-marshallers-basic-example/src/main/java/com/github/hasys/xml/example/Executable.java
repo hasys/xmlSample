@@ -1,5 +1,9 @@
 package com.github.hasys.xml.example;
 
+import java.io.DataOutputStream;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +24,7 @@ public class Executable {
 
     private static Definitions_XMLMapperImpl mapper = Definitions_XMLMapperImpl.INSTANCE;
 
-    public static void main(String[] args) throws XMLStreamException {
+    public static void main(String[] args) throws XMLStreamException, IOException {
 
         Process process = XmlGenerator.createProcess();
 
@@ -47,6 +51,12 @@ public class Executable {
         Definitions definitions = XmlGenerator.createDefinitions();
         definitions.setBpmnDiagram(XmlGenerator.createBpmnDiagram());
         definitions.setProcess(process);
-        System.out.println(mapper.write(definitions));
+        String generatedProcess = mapper.write(definitions);
+        System.out.println(generatedProcess);
+
+        File file = new File(System.getProperty("user.dir") + "/next-gen-marshallers-basic-example/target/bpmn-test/generated-process-example/src/main/resources/test-process.bpmn2");
+        DataOutputStream outputStream = new DataOutputStream(new FileOutputStream(file, false));
+        outputStream.write(generatedProcess.getBytes());
+        outputStream.close();
     }
 }

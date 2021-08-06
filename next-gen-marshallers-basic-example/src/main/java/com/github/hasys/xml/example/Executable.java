@@ -33,7 +33,7 @@ public class Executable {
         task.setIncoming(EDGE_1_ID);
         task.setOutgoing(EDGE_2_ID);
 
-        task.setName("Task");
+        task.setName("Task & Name");
         task.setScriptFormat("http://www.java.com/java");
         ExtensionElements taskExtensions = new ExtensionElements();
         MetaData taskExtensionData = new MetaData();

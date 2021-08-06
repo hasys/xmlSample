@@ -119,7 +119,7 @@ public class XmlGenerator {
         ExtensionElements taskExtensions = new ExtensionElements();
         MetaData taskExtensionData = new MetaData();
         taskExtensionData.setName("elementname");
-        taskExtensionData.setMetaValue("Task");
+        taskExtensionData.setMetaValue("Task &^ Name");
         List<MetaData> taskMetaDataList = new ArrayList<>();
         taskMetaDataList.add(taskExtensionData);
         taskExtensions.setMetaData(taskMetaDataList);

@@ -5,10 +5,7 @@ import java.util.Objects;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.treblereel.gwt.xml.mapper.api.annotation.TargetNamespace;
-
 @XmlRootElement(name = "endEvent", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL")
-@TargetNamespace(prefix = "bpmn2", namespace = "http://www.omg.org/bpmn20")
 public class EndEvent {
     @XmlAttribute
     private String id;

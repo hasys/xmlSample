@@ -8,11 +8,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 import com.github.hasys.xml.models.bpsim.BPSimData;
 import com.github.hasys.xml.models.drools.MetaData;
-import org.treblereel.gwt.xml.mapper.api.annotation.TargetNamespace;
 import org.treblereel.gwt.xml.mapper.api.annotation.XmlUnwrappedCollection;
 
 @XmlRootElement(name = "extensionElements", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL")
-@TargetNamespace(prefix = "bpmn2", namespace = "http://www.omg.org/bpmn20")
 public class ExtensionElements {
 
     @XmlElement(name = "BPSimData")

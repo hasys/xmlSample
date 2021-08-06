@@ -5,10 +5,7 @@ import java.util.Objects;
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.treblereel.gwt.xml.mapper.api.annotation.TargetNamespace;
-
 @XmlRootElement(name = "task", namespace = "http://www.omg.org/spec/BPMN/20100524/MODEL")
-@TargetNamespace(prefix = "bpmn2", namespace = "http://www.omg.org/bpmn20")
 public class Task {
 
     @XmlAttribute
